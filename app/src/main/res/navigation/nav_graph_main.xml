@@ -14,16 +14,49 @@
         <action
             android:id="@+id/action_startFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_startFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
     </fragment>
 
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.example.navigationcomponentapp.ui.profile.ProfileFragment"
         android:label="@string/profile_action_bar_title"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile"/>
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.example.navigationcomponentapp.ui.login.LoginFragment"
         android:label="@string/login_action_bar_title"
-        tools:layout="@layout/fragment_login" />
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_navigation2"
+            app:destination="@id/navigation2" />
+    </fragment>
+
+    <navigation
+        android:id="@+id/navigation2"
+        app:startDestination="@id/profileDataFragment">
+        <fragment
+            android:id="@+id/profileDataFragment"
+            android:name="com.example.navigationcomponentapp.ui.registration.profile.ProfileDataFragment"
+            android:label="@string/profile_data_action_bar_title"
+            tools:layout="@layout/fragment_profile_data">
+            <action
+                android:id="@+id/action_profileDataFragment_to_chooseCredentialsFragment"
+                app:destination="@id/chooseCredentialsFragment" />
+        </fragment>
+        <fragment
+            android:id="@+id/chooseCredentialsFragment"
+            android:name="com.example.navigationcomponentapp.ui.registration.choosecredentials.ChooseCredentialsFragment"
+            android:label="@string/choose_credentials_action_bar_title"
+            tools:layout="@layout/fragment_choose_credentials">
+
+            <argument android:name="name"
+                app:argType="string"
+                app:nullable="false"/>
+
+        </fragment>
+    </navigation>
+
 </navigation>

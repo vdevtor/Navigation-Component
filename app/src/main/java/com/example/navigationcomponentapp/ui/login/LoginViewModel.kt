@@ -1,31 +1,40 @@
 package com.example.navigationcomponentapp.ui.login
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.navigationcomponentapp.R
 
 class LoginViewModel : ViewModel() {
-
     sealed class AuthenticationState {
         object Authenticated : AuthenticationState()
         object UnAuthenticated : AuthenticationState()
         class InvalidAuthentication(val fields: List<Pair<String, Int>>) : AuthenticationState()
     }
-
-    val authenticationStateEvent = MutableLiveData<AuthenticationState>()
     var userName: String = ""
+    private var token: String = ""
+    private val _authenticationStateEvent = MutableLiveData<AuthenticationState>()
+
+    val authenticationStateEvent : LiveData<AuthenticationState>
+    get() = _authenticationStateEvent
+
     init {
-       refuseAuthentication()
+        refuseAuthentication()
     }
 
-    fun refuseAuthentication(){
-        authenticationStateEvent.value = AuthenticationState.UnAuthenticated
+    fun refuseAuthentication() {
+        _authenticationStateEvent.value = AuthenticationState.UnAuthenticated
     }
 
+    fun authenticateToken(token:String,username: String){
+        this.token = token
+        this.userName = username
+        _authenticationStateEvent.value = AuthenticationState.Authenticated
+    }
     fun authentication(username: String, password: String) {
         if (isValidForm(username, password)) {
             this.userName = username
-            authenticationStateEvent.value = AuthenticationState.Authenticated
+            _authenticationStateEvent.value = AuthenticationState.Authenticated
         }
     }
 
@@ -41,7 +50,7 @@ class LoginViewModel : ViewModel() {
         }
 
         if (invalidFields.isNotEmpty()) {
-            authenticationStateEvent.value = AuthenticationState.InvalidAuthentication(invalidFields)
+            _authenticationStateEvent.value = AuthenticationState.InvalidAuthentication(invalidFields)
             return false
         }
         return true
