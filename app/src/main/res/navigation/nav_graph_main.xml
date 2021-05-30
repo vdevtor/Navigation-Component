@@ -11,13 +11,18 @@
         android:label="@string/start_action_bar_title"
         tools:layout="@layout/fragment_start">
         <action
-            android:id="@+id/action_startFragment_to_profileFragment"
-            app:destination="@id/profileFragment"
-            />
+            android:id="@+id/action_startFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.example.navigationcomponentapp.ui.profile.ProfileFragment"
         android:label="@string/profile_action_bar_title"
         tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.navigationcomponentapp.ui.login.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" />
 </navigation>

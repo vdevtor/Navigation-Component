@@ -52,6 +52,7 @@ dependencies {
 
     def lifecycle_version = "2.3.1"
     def nav_version = "2.3.5"
+    def intuit_version = "1.0.6"
 
     //Lifecycle Components
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version"
@@ -63,6 +64,10 @@ dependencies {
     //Navigation Component
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
+
+    //Scalable size unit
+    implementation "com.intuit.sdp:sdp-android:$intuit_version"
+    implementation "com.intuit.ssp:ssp-android:$intuit_version"
 
 
 

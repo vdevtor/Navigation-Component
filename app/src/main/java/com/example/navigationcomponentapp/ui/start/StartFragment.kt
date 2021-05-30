@@ -24,7 +24,7 @@ class StartFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding?.buttonNext?.setOnClickListener {
-            findNavController().navigateWithAnimastions(R.id.action_startFragment_to_profileFragment)
+            findNavController().navigateWithAnimastions(R.id.action_startFragment_to_loginFragment)
         }
     }
 
