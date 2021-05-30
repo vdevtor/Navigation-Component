@@ -10,9 +10,10 @@
         android:name="com.example.navigationcomponentapp.ui.start.StartFragment"
         android:label="@string/start_action_bar_title"
         tools:layout="@layout/fragment_start">
+
         <action
-            android:id="@+id/action_startFragment_to_loginFragment"
-            app:destination="@id/loginFragment" />
+            android:id="@+id/action_startFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
     </fragment>
 
     <fragment
