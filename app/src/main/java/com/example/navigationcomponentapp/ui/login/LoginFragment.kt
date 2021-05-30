@@ -7,11 +7,13 @@ import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.addCallback
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.example.navigationcomponentapp.R
 import com.example.navigationcomponentapp.databinding.FragmentLoginBinding
+import com.example.navigationcomponentapp.extensions.disMissError
 import com.google.android.material.textfield.TextInputLayout
 
 class LoginFragment : Fragment() {
@@ -37,6 +39,14 @@ class LoginFragment : Fragment() {
         }
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner){
             cancelAuthentication()
+        }
+
+        binding?.inputLoginUsername?.addTextChangedListener {
+            binding?.inputLayoutLoginUsername?.disMissError()
+        }
+
+        binding?.inputLoginPassword?.addTextChangedListener {
+            binding?.inputLayoutLoginPassword?.disMissError()
         }
     }
 
