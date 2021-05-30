@@ -1,16 +1,16 @@
 package com.example.navigationcomponentapp.ui.start
 
-import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.example.navigationcomponentapp.R
+
 import com.example.navigationcomponentapp.databinding.FragmentStartBinding
 
 class StartFragment : Fragment() {
-    private lateinit var listener: OnButtonClicked
     private var binding: FragmentStartBinding? = null
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -23,23 +23,8 @@ class StartFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding?.buttonNext?.setOnClickListener {
-            listener.onclicked()
+            findNavController().navigate(R.id.action_startFragment_to_profileFragment)
         }
     }
 
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        if (context is OnButtonClicked){
-            listener = context
-        }
-    }
-    companion object{
-        fun newInstance(): StartFragment{
-            return StartFragment()
-        }
-    }
-
-    interface OnButtonClicked{
-        fun onclicked()
-    }
 }
